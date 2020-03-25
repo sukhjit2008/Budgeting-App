@@ -99,9 +99,10 @@ h2 {
 .Submit-button__icon {
   margin-left: 0.4rem;
   transition: transform 0.2s;
+  font-size: 1rem;
 }
 
-.submit:active .Submit-button__icon {
+.btn:active .Submit-button__icon {
   transform: translateX(0.3rem);
 }
 
@@ -208,6 +209,7 @@ ul {
 
 .icon-faTrashAlt {
   margin-left: .5rem;
+  font-size: 1rem;
 }
 
 .heading-tertiary {
