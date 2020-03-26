@@ -23,14 +23,15 @@ class AddItemAndPrice extends Component {
       !this.state.item.match(/^[a-zA-Z]+\s?[a-zA-Z]+$/) &&
       this.state.item.trim(" ") !== " "
     ) {
-      console.log("Must enter a string");
+      this.setState({ error: "Must enter a string" });
     } else if (!this.state.price.match(/^[0-9]+$/)) {
-      console.log("Must be a positive number");
+      this.setState({ error: "Must be a positive number" });
     } else {
       this.props.onExpenseItemCreate(this.state);
       this.setState({
         item: "",
-        price: ""
+        price: "",
+        error: null
       });
     }
   };
@@ -49,6 +50,7 @@ class AddItemAndPrice extends Component {
           onChange={this.onItemPrice}
           value={this.state.price}
         />
+        <span className="error">{this.state.error}</span>
         <button className="btn">
           Submit
           <FontAwesomeIcon
