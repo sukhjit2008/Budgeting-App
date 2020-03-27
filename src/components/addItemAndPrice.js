@@ -13,12 +13,16 @@ const addItemAndPrice = ({
   return (
     <form onSubmit={onSubmitHandler} className="form-box">
       <input
+        type="text"
+        required
         placeholder="e.g item"
         className="input input-item"
         onChange={onItemChange}
         value={item}
       />
       <input
+        type="number"
+        required
         placeholder="e.g price"
         className="input input-price"
         onChange={onItemPrice}
