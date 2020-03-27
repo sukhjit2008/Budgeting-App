@@ -15,7 +15,11 @@ class item extends Component {
           onChange={() => {}}
         />
         <span className="items__icons">
-          <FontAwesomeIcon icon={faEdit} className="icon-edit" />
+          <FontAwesomeIcon
+            icon={faEdit}
+            className="icon-edit"
+            onClick={this.props.onEditHandler}
+          />
           <FontAwesomeIcon
             icon={faTrashAlt}
             className="icon-delete"

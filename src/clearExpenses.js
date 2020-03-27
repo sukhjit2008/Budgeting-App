@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const clearExpenses = props => {
-  return (
-    <button className="btn" onClick={props.onClearExpensesHandler}>
-      clear expenses
-      <FontAwesomeIcon icon={faTrashAlt} className="icon-faTrashAlt" />
-    </button>
-  );
+  const button =
+    props.expenses.length > 0 ? (
+      <button className="btn" onClick={props.onClearExpensesHandler}>
+        clear expenses
+        <FontAwesomeIcon icon={faTrashAlt} className="icon-faTrashAlt" />
+      </button>
+    ) : null;
+  return <>{button}</>;
 };
 
 export default clearExpenses;

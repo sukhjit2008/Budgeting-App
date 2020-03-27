@@ -13,6 +13,13 @@ class list extends Component {
               id={expense.id}
               key={expense.id}
               onDeleteHandler={() => this.props.onDeleteHandler(expense.id)}
+              onEditHandler={() =>
+                this.props.onEditHandler(
+                  expense.id,
+                  expense.item,
+                  expense.price
+                )
+              }
             />
           );
         })

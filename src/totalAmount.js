@@ -2,9 +2,9 @@ import React from "react";
 
 const totalAmount = props => {
   let sum = 0;
-  if (props.priceArr) {
-    sum = props.priceArr.reduce((acc, val) => {
-      acc += val;
+  if (props.expenses) {
+    sum = props.expenses.reduce((acc, val) => {
+      acc += +val.price;
       return acc;
     }, 0);
   }
