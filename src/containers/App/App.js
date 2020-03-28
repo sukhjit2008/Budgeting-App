@@ -10,8 +10,6 @@ class App extends Component {
   state = {
     item: "",
     price: "",
-    editItem: "",
-    editPrice: "",
     expenses: [
       // { id: 1, item: "rent", price: 1838 },
       // { id: 2, item: "grocery", price: 800 },
@@ -20,7 +18,6 @@ class App extends Component {
       // { id: 5, item: "water bill", price: 150 }
     ],
     priceArr: [],
-    totalSum: 0,
     showClearExpenses: false,
     editMode: true,
     id: 0
@@ -39,7 +36,12 @@ class App extends Component {
   onSubmitHandler = e => {
     e.preventDefault();
     //When edit mode is enabled
-    if (!this.state.editMode) {
+    //check if it is a string
+    if (this.state.item.match(/[0-9!"£$%^&*()_+-=]/)) {
+      console.log("not a string");
+    } else if (this.state.price * 1 < 0) {
+      console.log("not allowed");
+    } else if (!this.state.editMode) {
       const newExpenses = [...this.state.expenses];
       const id = this.state.id;
       const index = newExpenses.findIndex(el => el.id === id);
@@ -56,17 +58,27 @@ class App extends Component {
     } else {
       //Regular submit functionality
       const id = uuidv4();
-      const newExpense = { id, item: this.state.item, price: this.state.price };
-      const expenses = [...this.state.expenses, newExpense];
-      const priceArr = [...this.state.priceArr, +this.state.price];
-      this.setState({ priceArr });
+      if (this.state.item.match(/[0-9!"£$%^&*()_+-=]/)) {
+        console.log("not a string");
+      } else if (this.state.price * 1 < 0) {
+        console.log("not allowed");
+      } else {
+        const newExpense = {
+          id,
+          item: this.state.item,
+          price: this.state.price
+        };
+        const expenses = [...this.state.expenses, newExpense];
+        const priceArr = [...this.state.priceArr, +this.state.price];
+        this.setState({ priceArr });
 
-      this.setState({ expenses });
-      this.setState({ item: "" });
-      this.setState({ price: "" });
+        this.setState({ expenses });
+        this.setState({ item: "" });
+        this.setState({ price: "" });
+      }
+
+      this.setState({ editMode: true });
     }
-
-    this.setState({ editMode: true });
   };
   //Delete handler
   onDeleteHandler = id => {
