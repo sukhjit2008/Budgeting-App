@@ -90,6 +90,7 @@ h2 {
   text-transform: uppercase;
   margin: 2rem 0;
   opacity: .8;
+  grid-column: 1/span 1;
 }
 
 .btn:hover {
