@@ -38,9 +38,11 @@ class App extends Component {
     //When edit mode is enabled
     //check if it is a string
     if (this.state.item.match(/[0-9!"£$%^&*()_+-=]/)) {
-      console.log("not a string");
+      alert("has to be string");
+
+      //check if the input price is a postive no
     } else if (this.state.price * 1 < 0) {
-      console.log("not allowed");
+      alert("price has to be a positive number");
     } else if (!this.state.editMode) {
       const newExpenses = [...this.state.expenses];
       const id = this.state.id;
@@ -58,10 +60,12 @@ class App extends Component {
     } else {
       //Regular submit functionality
       const id = uuidv4();
+      //check if it is a string
       if (this.state.item.match(/[0-9!"£$%^&*()_+-=]/)) {
-        console.log("not a string");
+        alert("has to be string");
+        //check if the input price is a postive no
       } else if (this.state.price * 1 < 0) {
-        console.log("not allowed");
+        alert("price has to be a positive number");
       } else {
         const newExpense = {
           id,
